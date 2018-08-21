@@ -49,6 +49,7 @@ pipeline {
             // so we can retrieve the version in later steps
             sh "echo \$(jx-release-version) > VERSION"
             sh "mvn versions:set -DnewVersion=\$(cat VERSION)"
+            sh "make tag"
           }
           // dir ('./charts/upstream') {
           //   container('maven') {
@@ -60,9 +61,6 @@ pipeline {
 
             sh 'export VERSION=`cat VERSION`'// && skaffold build -f skaffold.yaml'
 
-            sh "git config --global credential.helper store"
-
-            sh "jx step git credentials"
             sh "updatebot push"
 
         //    sh "jx step post build --image $DOCKER_REGISTRY/$ORG/$APP_NAME:\$(cat VERSION)"
