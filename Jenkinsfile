@@ -49,7 +49,10 @@ pipeline {
             // so we can retrieve the version in later steps
             sh "echo \$(jx-release-version) > VERSION"
             sh "mvn versions:set -DnewVersion=\$(cat VERSION)"
-            sh "make tag"
+            sh "git add --all"
+            sh 'git commit -m "release \$(cat VERSION)" --allow-empty # if first release then no verion update is performed'
+            sh 'git tag -fa v\$(cat VERSION) -m "Release version $(RELEASE_VERSION)"'
+            sh 'git push origin v\$(cat VERSION)"'
           }
           // dir ('./charts/upstream') {
           //   container('maven') {
