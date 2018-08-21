@@ -65,6 +65,7 @@ pipeline {
             sh 'export VERSION=`cat VERSION`'// && skaffold build -f skaffold.yaml'
 
             sh "updatebot push"
+            sh "updatebot push-version --kind maven org.example/upstream \$(cat VERSION)"
 
         //    sh "jx step post build --image $DOCKER_REGISTRY/$ORG/$APP_NAME:\$(cat VERSION)"
           }
