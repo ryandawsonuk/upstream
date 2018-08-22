@@ -5,7 +5,7 @@
 
 	<groupId>org.example</groupId>
 	<artifactId>upstream</artifactId>
-	<version>0.0.13</version>
+	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<name>upstream</name>
