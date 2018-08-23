@@ -66,7 +66,7 @@ pipeline {
 
             sh "echo doing updatebot push"
 
-            sh "java -jar updatebot.jar push"
+            sh "updatebot push"
 
             //sh "echo doing updatebot push-version"
             //sh "java -jar updatebot.jar push-version --kind maven org.example:upstream \$(cat VERSION)"
